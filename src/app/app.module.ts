@@ -1,3 +1,5 @@
+import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from './shared/shared.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -12,9 +14,8 @@ import { CadastrarProdutosComponent } from './components/produtos/cadastrar-prod
 import { LOCALE_ID } from '@angular/core';
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
-
+import { FormsModule } from '@angular/forms';
 registerLocaleData(localePt);
-
 
 @NgModule({
   declarations: [
@@ -23,15 +24,16 @@ registerLocaleData(localePt);
     FooterComponent,
     HomeComponent,
     ListarProdutosComponent,
-    CadastrarProdutosComponent
+    CadastrarProdutosComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    SharedModule,
+    HttpClientModule
   ],
-  providers: [
-    { provide: LOCALE_ID, useValue: 'pt-BR' },
-],
-  bootstrap: [AppComponent]
+  providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
